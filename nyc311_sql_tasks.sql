@@ -195,14 +195,14 @@ SELECT
         ELSE 0 
     END AS has_closed_date
 
-FROM raw_311
+FROM (
+    SELECT *,
+        ROW_NUMBER() OVER (PARTITION BY "Unique Key" ORDER BY ROWID) AS rn
+    FROM raw_311
+) AS deduped
 
--- Remove exact duplicates based on Unique Key (keep first occurrence)
-WHERE "Unique Key" IN (
-    SELECT MIN("Unique Key") 
-    FROM raw_311 
-    GROUP BY "Unique Key"
-)
+-- Keep only first occurrence of each Unique Key (proper deduplication)
+WHERE rn = 1
 
 -- Filter out records with nonsensical dates (year before 2010 or after current year)
 AND (

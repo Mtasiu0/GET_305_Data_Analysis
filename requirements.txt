@@ -1,0 +1,27 @@
+# NYC 311 Data Analysis - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Database
+sqlalchemy>=2.0.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Statistical analysis
+scipy>=1.10.0
+statsmodels>=0.14.0
+
+# Data profiling
+ydata-profiling>=4.0.0
+
+# PDF generation
+fpdf>=1.7.2
+
+# Jupyter notebook
+jupyter>=1.0.0
+notebook>=7.0.0

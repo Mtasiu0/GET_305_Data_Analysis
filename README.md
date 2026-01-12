@@ -1,62 +1,91 @@
 # NYC 311 Service Request Data Analysis
 
 ## Overview
-This project analyzes NYC 311 service request data to identify complaint patterns, response times, and geographic distributions across New York City boroughs.
+Comprehensive analysis of NYC 311 service request data to identify complaint patterns, response times, and geographic distributions across New York City boroughs.
+
+## Quick Start
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Run the full analysis pipeline
+python main.py
+```
+
+This generates:
+- **dashboard.html** - Interactive HTML dashboard with all charts embedded
+- **Report.pdf** - Executive summary
 
 ## Project Structure
 ```
-├── nyc311.db                    # SQLite database with raw and cleaned data
-├── nyc311_sql_tasks.sql         # SQL cleaning and transformation queries
-├── NYC311_analysis.ipynb        # Main analysis notebook
-├── nyc311_profile.html          # Automated data profiling report
-├── Report.pdf                   # Summary report of findings
-├── setup_database.py            # Database setup script
-└── README.md                    # This file
+GET_305_Data_Analysis/
+├── main.py                 # ⭐ MAIN ENTRY POINT
+├── requirements.txt        # Python dependencies
+├── README.md               # This file
+├── NYC311_analysis.ipynb   # Detailed Jupyter notebook
+├── nyc311_sql_tasks.sql    # SQL cleaning queries
+├── setup_database.py       # Database setup module
+├── generate_dashboard.py   # HTML dashboard generator (frontend)
+├── generate_report.py      # PDF report module
+├── .gitignore              # Git ignore rules
+└── 311_Service_Requests_from_2010_to_Present.csv/  # Raw data
 ```
 
-## Prerequisites
-- Python 3.9+
-- Required libraries: pandas, numpy, sqlalchemy, matplotlib, seaborn, scipy, statsmodels, ydata_profiling
+## Usage
 
-## Installation
+### Full Pipeline (Recommended)
 ```bash
-pip install pandas numpy sqlalchemy matplotlib seaborn scipy statsmodels ydata-profiling jupyter
+python main.py
 ```
 
-## How to Reproduce
-
-### Step 1: Database Setup
-If the database doesn't exist, run:
+### Individual Steps
 ```bash
-python setup_database.py
+python main.py --setup      # Setup database only
+python main.py --dashboard  # Generate HTML dashboard only
+python main.py --report     # Generate PDF report only
+python main.py --help       # Show all options
 ```
-This imports the CSV data and creates the cleaned analytical table.
 
-### Step 2: Run Analysis
-Open and execute the Jupyter notebook:
+### Jupyter Notebook
+For interactive analysis:
 ```bash
 jupyter notebook NYC311_analysis.ipynb
 ```
 
-### Step 3: Generate Profiling Report
-The notebook generates `nyc311_profile.html` automatically when executed.
+## Generated Outputs
 
-## Data Description
-- **Source**: NYC Open Data - 311 Service Requests
-- **Records**: 364,558 service requests
-- **Key Fields**: Complaint type, borough, dates, coordinates, status
+| File | Description |
+|------|-------------|
+| `nyc311.db` | SQLite database with raw and cleaned data |
+| `dashboard.html` | **📊 HTML dashboard with embedded charts** |
+| `Report.pdf` | Executive summary PDF |
+
+## Dashboard Features
+The `dashboard.html` is a professional frontend that includes:
+- 📈 Time series of complaint volume
+- 📋 Top 10 complaint types
+- 🗺️ Geographic distribution map
+- ⏱️ Response time analysis
+- 📊 Borough comparison
+- 🕐 Hourly patterns
+
+**All charts are embedded directly in the HTML** - no separate image files!
+
+## Data Pipeline
+```
+Raw CSV → SQLite (raw_311) → SQL Cleaning → 311_cleaned → Dashboard + Report
+```
 
 ## Key Findings
-1. Brooklyn has the highest complaint volume (118,864 requests)
+1. Brooklyn has the highest complaint volume (~118,864 requests)
 2. HEAT/HOT WATER is the most common complaint type
-3. Statistically significant differences in response times across boroughs
-4. Strong association between complaint types and boroughs
+3. Significant differences in response times across boroughs (p < 0.05)
+4. Strong association between complaint types and boroughs (p < 0.001)
 
-## Deliverables
-- `nyc311_sql_tasks.sql` - Documented SQL queries
-- `NYC311_analysis.ipynb` - Complete Python analysis
-- `nyc311_profile.html` - Automated profiling report
-- `Report.pdf` - Executive summary
+## Requirements
+- Python 3.9+
+- See `requirements.txt` for dependencies
 
 ## Author
 GET 305 Data Analysis Assignment
