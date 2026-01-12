@@ -108,7 +108,7 @@ def run_full_pipeline():
     print("\nGenerated outputs:")
     outputs = [
         ('nyc311.db', 'SQLite database with raw and cleaned data'),
-        ('dashboard.html', 'Interactive HTML dashboard with charts'),
+        ('nyc311_profile.html', 'Interactive HTML profiling dashboard with charts'),
         ('Report.pdf', 'Executive summary PDF'),
     ]
     
@@ -116,7 +116,7 @@ def run_full_pipeline():
         exists = "✓" if os.path.exists(filename) else "✗"
         print(f"  {exists} {filename} - {description}")
     
-    print("\nOpen dashboard.html in your browser to view the analysis.")
+    print("\nOpen nyc311_profile.html in your browser to view the analysis.")
     print("For detailed analysis, open: NYC311_analysis.ipynb")
     return True
 

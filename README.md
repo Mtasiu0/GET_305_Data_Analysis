@@ -14,7 +14,7 @@ python main.py
 ```
 
 This generates:
-- **dashboard.html** - Interactive HTML dashboard with all charts embedded
+- **nyc311_profile.html** - Interactive HTML profiling report with all charts embedded
 - **Report.pdf** - Executive summary
 
 ## Project Structure
@@ -23,13 +23,14 @@ GET_305_Data_Analysis/
 ├── main.py                 # ⭐ MAIN ENTRY POINT
 ├── requirements.txt        # Python dependencies
 ├── README.md               # This file
-├── NYC311_analysis.ipynb   # Detailed Jupyter notebook
+├── NYC311_analysis.ipynb   # Detailed Jupyter notebook with statistics
 ├── nyc311_sql_tasks.sql    # SQL cleaning queries
 ├── setup_database.py       # Database setup module
-├── generate_dashboard.py   # HTML dashboard generator (frontend)
+├── generate_dashboard.py   # HTML profiling report generator
 ├── generate_report.py      # PDF report module
-├── .gitignore              # Git ignore rules
-└── 311_Service_Requests_from_2010_to_Present.csv/  # Raw data
+├── nyc311_profile.html     # Generated profiling report
+├── Report.pdf              # Generated PDF report
+└── .gitignore              # Git ignore rules
 ```
 
 ## Usage
@@ -42,13 +43,13 @@ python main.py
 ### Individual Steps
 ```bash
 python main.py --setup      # Setup database only
-python main.py --dashboard  # Generate HTML dashboard only
+python main.py --dashboard  # Generate HTML profiling report only
 python main.py --report     # Generate PDF report only
 python main.py --help       # Show all options
 ```
 
 ### Jupyter Notebook
-For interactive analysis:
+For interactive analysis with statistics:
 ```bash
 jupyter notebook NYC311_analysis.ipynb
 ```
@@ -58,23 +59,24 @@ jupyter notebook NYC311_analysis.ipynb
 | File | Description |
 |------|-------------|
 | `nyc311.db` | SQLite database with raw and cleaned data |
-| `dashboard.html` | **📊 HTML dashboard with embedded charts** |
+| `nyc311_profile.html` | **📊 HTML profiling report with embedded charts** |
 | `Report.pdf` | Executive summary PDF |
 
-## Dashboard Features
-The `dashboard.html` is a professional frontend that includes:
+## Profiling Report Features
+The `nyc311_profile.html` includes:
 - 📈 Time series of complaint volume
 - 📋 Top 10 complaint types
 - 🗺️ Geographic distribution map
 - ⏱️ Response time analysis
 - 📊 Borough comparison
 - 🕐 Hourly patterns
+- 📉 Data quality statistics
 
-**All charts are embedded directly in the HTML** - no separate image files!
+All charts are embedded directly in the HTML - no separate image files!
 
 ## Data Pipeline
 ```
-Raw CSV → SQLite (raw_311) → SQL Cleaning → 311_cleaned → Dashboard + Report
+Raw CSV → SQLite (raw_311) → SQL Cleaning → 311_cleaned → Profiling + Report
 ```
 
 ## Key Findings
@@ -82,6 +84,12 @@ Raw CSV → SQLite (raw_311) → SQL Cleaning → 311_cleaned → Dashboard + Re
 2. HEAT/HOT WATER is the most common complaint type
 3. Significant differences in response times across boroughs (p < 0.05)
 4. Strong association between complaint types and boroughs (p < 0.001)
+
+## Statistical Analysis (in Notebook)
+- **Hypothesis Test 1**: Two-sample t-test (Manhattan vs Brooklyn response times)
+- **Hypothesis Test 2**: Chi-square test of independence (complaint type × borough)
+- **Correlation Analysis**: Pearson and Spearman coefficients
+- **Regression**: OLS model predicting response time
 
 ## Requirements
 - Python 3.9+

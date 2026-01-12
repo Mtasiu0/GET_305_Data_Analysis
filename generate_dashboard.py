@@ -634,13 +634,13 @@ def main():
     html_content = generate_html(df, charts)
     
     # Save file
-    with open('dashboard.html', 'w', encoding='utf-8') as f:
+    with open('nyc311_profile.html', 'w', encoding='utf-8') as f:
         f.write(html_content)
     
     print("\n" + "=" * 60)
-    print("SUCCESS: dashboard.html generated!")
+    print("SUCCESS: nyc311_profile.html generated!")
     print("=" * 60)
-    print("\nOpen dashboard.html in your browser to view the analysis.")
+    print("\nOpen nyc311_profile.html in your browser to view the analysis.")
 
 
 if __name__ == '__main__':
