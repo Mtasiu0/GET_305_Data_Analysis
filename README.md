@@ -96,4 +96,4 @@ Raw CSV → SQLite (raw_311) → SQL Cleaning → 311_cleaned → Profiling + Re
 - See `requirements.txt` for dependencies
 
 ## Author
-GET 305 Data Analysis Assignment
+Muhammad Muntazar Tasiu 20231725
